@@ -1,4 +1,5 @@
 import React from 'react';
+import LabeledInput from './LabeledInput';
 
 const onNewIngredientClick = e => {
   e.preventDefault();
@@ -15,19 +16,25 @@ const onSubmit = e => {
 const renderIngredients = ingredients => {
   console.log('ingredients' + ingredients)
 
-  // return ingredients && (
-  return ingredients.map(ingredient => <td>{ingredient}</td>)
+  return ingredients.map(ingredient =>
+    <LabeledInput
+      label='ingredient'
+    />
+  )
 }
 
 
-const NewRecipe = ({ ingredients }) => (
+const NewRecipe = ({ ingredients, setIngredients }) => (
   <div className="container">
     <form >
       <label>Dish/recipe Name</label><input type="text" name="username"></input>
       <br />
       <label>Instructions (optional)</label><textarea name="instructions" rows="4" cols="50"></textarea>
       <br />
-      <button onClick={onNewIngredientClick}>New ingredient</button>
+      <button onClick={(e) => {
+        e.preventDefault()
+        setIngredients(['a', 'b'])
+      }}>New ingredient</button>
 
       <br />
       {renderIngredients(ingredients)}
