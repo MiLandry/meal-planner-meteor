@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LabeledInput from './LabeledInput';
 
 const onNewIngredientClick = e => {
@@ -13,34 +13,59 @@ const onSubmit = e => {
 
 }
 
+
+const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient) => {
+  return (
+    <div>
+      <LabeledInput
+        label='ingredient'
+        value={newIngredient}
+        onChange={(event) => {
+          console.log(event.target.value);
+          setNewIngredient(event.target.value)
+
+
+        }}
+      />
+      <button onClick={(e) => {
+        e.preventDefault()
+        addIngredient(newIngredient)
+        setNewIngredient('')
+      }} >
+        Add ingredient
+    </button>
+    </div>
+  )
+
+
+}
+
 const renderIngredients = ingredients => {
   console.log('ingredients' + ingredients)
 
   return ingredients.map(ingredient =>
-    <LabeledInput
-      label='ingredient'
-    />
+    <tr>
+      {ingredient}
+    </tr>
   )
 }
 
 
-const NewRecipe = ({ ingredients, setIngredients }) => (
-  <div className="container">
-    <form >
-      <label>Dish/recipe Name</label><input type="text" name="username"></input>
-      <br />
-      <label>Instructions (optional)</label><textarea name="instructions" rows="4" cols="50"></textarea>
-      <br />
-      <button onClick={(e) => {
-        e.preventDefault()
-        setIngredients(['a', 'b'])
-      }}>New ingredient</button>
-
-      <br />
-      {renderIngredients(ingredients)}
-      <button onClick={onSubmit}>Add new recipe</button>
-    </form>
-  </div>
-);
+const NewRecipe = ({ ingredients, addIngredient }) => {
+  const [newIngredient, setNewIngredient] = useState('banana');
+  return (
+    <div className="container">
+      <form >
+        <label>Dish/recipe Name</label><input type="text" name="username"></input>
+        <br />
+        <label>Instructions (optional)</label><textarea name="instructions" rows="4" cols="50"></textarea>
+        <br />
+        {renderIngredients(ingredients)}
+        {renderNewIngredientInput(newIngredient, setNewIngredient, addIngredient)}
+        <button onClick={onSubmit}>Add new recipe</button>
+      </form>
+    </div>
+  )
+};
 
 export default NewRecipe;
