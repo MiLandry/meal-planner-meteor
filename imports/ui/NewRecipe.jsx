@@ -13,7 +13,6 @@ const onSubmit = e => {
 
 }
 
-
 const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient) => {
   return (
     <div>
@@ -42,27 +41,60 @@ const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient
 
 const renderIngredients = ingredients => {
   console.log('ingredients' + ingredients)
-
-  return ingredients.map(ingredient =>
+  const list = (ingredients.map(ingredient =>
     <tr>
       {ingredient}
     </tr>
+  ))
+
+  return (
+    <div>
+
+      <h2>list of ingredients</h2>
+      {list}
+    </div>
+
+
   )
 }
 
 
-const NewRecipe = ({ ingredients, addIngredient }) => {
-  const [newIngredient, setNewIngredient] = useState('banana');
+const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient }) => {
+  const [newIngredient, setNewIngredient] = useState('');
+  const [instructions, setInstructions] = useState('');
   return (
     <div className="container">
       <form >
-        <label>Dish/recipe Name</label><input type="text" name="username"></input>
+        <LabeledInput
+          label='Recipe Name'
+          value={recipeName}
+          onChange={(e) => {
+            setRecipeName(e.target.value)
+          }}
+        />
         <br />
-        <label>Instructions (optional)</label><textarea name="instructions" rows="4" cols="50"></textarea>
+        <label>Instructions (optional)</label><textarea
+          name="instructions"
+          rows="4"
+          cols="50"
+          value={instructions}
+          onChange={e => {
+            e.preventDefault()
+            setInstructions(e.target.value)
+          }}
+        />
         <br />
         {renderIngredients(ingredients)}
         {renderNewIngredientInput(newIngredient, setNewIngredient, addIngredient)}
-        <button onClick={onSubmit}>Add new recipe</button>
+        <button onClick={(e) => {
+          e.preventDefault();
+          console.log(' you submitted');
+          // console.log(recipeName);
+          console.log('ingredients' + ingredients);
+          console.log('instructions' + instructions)
+          // console.log(instructions);
+
+        }}>Add new recipe</button>
       </form>
     </div>
   )

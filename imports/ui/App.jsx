@@ -5,6 +5,7 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 const App = () => {
   const [ingredients, setIngredients] = useState(['banana']);
+  const [recipeName, setRecipeName] = useState(['Bisque']);
   const addIngredient = (ingredient) => {
     const newIngredients = Object.create(ingredients)
     newIngredients.push(ingredient)
@@ -15,6 +16,8 @@ const App = () => {
       <h1>Nav bar stand in</h1>
       <AccountsUIWrapper />
       <NewRecipe
+        recipeName={recipeName}
+        setRecipeName={setRecipeName}
         ingredients={ingredients}
         addIngredient={addIngredient}
       />
