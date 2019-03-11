@@ -63,7 +63,7 @@ const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient }) =>
   const [newIngredient, setNewIngredient] = useState('');
   const [instructions, setInstructions] = useState('');
   return (
-    <div className="container">
+    <div className="new-recipe-form-container">
       <form >
         <LabeledInput
           label='Recipe Name'
