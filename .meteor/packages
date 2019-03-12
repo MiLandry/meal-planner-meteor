@@ -18,3 +18,4 @@ static-html             # Define static page content in .html files
 accounts-ui
 accounts-password
 apollo
+kadira:flow-router

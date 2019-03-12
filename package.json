@@ -18,7 +18,8 @@
     "graphql-tools": "^4.0.4",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "react-mounter": "^1.2.0"
   },
   "meteor": {
     "mainModule": {
