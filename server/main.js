@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import Links from '/imports/api/links';
-import { makeExecutableSchema } from "graphql-tools"
+// import { makeExecutableSchema } from "graphql-tools"
 import { ApolloServer, gql } from 'apollo-server-express'
 import { WebApp } from 'meteor/webapp'
 import { getUser } from 'meteor/apollo'
