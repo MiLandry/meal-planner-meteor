@@ -14,8 +14,6 @@ const renderRoutes = () => (
       <Route exact path="/" component={App} />
       {/* <Route exact path="/lists/:id" component={ListPageContainer}/> */}
       <Route exact path="/test" component={TestComponent} />
-      {/* <Route exact path="/join" component={AuthPageJoin}/> */}
-      {/* <Route component={NotFoundPage}/> */}
     </Switch>
   </Router>
 );

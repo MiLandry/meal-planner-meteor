@@ -16,7 +16,17 @@ const onSubmit = e => {
 const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient) => {
   return (
     <div>
+      <button onClick={(e) => {
+        e.preventDefault()
+        addIngredient(newIngredient)
+        setNewIngredient('')
+      }} >
+        Add ingredient
+    </button>
+      {/* TODO: make the div wrapping the input here inline!!! */}
       <LabeledInput
+        className='new-ingredient-button'
+        useLabel={false}
         label='ingredient'
         value={newIngredient}
         onChange={(event) => {
@@ -26,13 +36,6 @@ const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient
 
         }}
       />
-      <button onClick={(e) => {
-        e.preventDefault()
-        addIngredient(newIngredient)
-        setNewIngredient('')
-      }} >
-        Add ingredient
-    </button>
     </div>
   )
 
@@ -84,16 +87,16 @@ const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient }) =>
           }}
         />
         <br />
-        {renderIngredients(ingredients)}
+        <br />
+        <br />
+        <hr />
         {renderNewIngredientInput(newIngredient, setNewIngredient, addIngredient)}
+        {renderIngredients(ingredients)}
         <button onClick={(e) => {
           e.preventDefault();
           console.log(' you submitted');
-          // console.log(recipeName);
           console.log('ingredients' + ingredients);
           console.log('instructions' + instructions)
-          // console.log(instructions);
-
         }}>Add new recipe</button>
       </form>
     </div>

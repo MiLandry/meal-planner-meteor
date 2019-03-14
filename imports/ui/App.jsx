@@ -4,7 +4,7 @@ import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 
 const App = () => {
-  const [ingredients, setIngredients] = useState(['banana']);
+  const [ingredients, setIngredients] = useState([]);
   const [recipeName, setRecipeName] = useState(['Bisque']);
   const addIngredient = (ingredient) => {
     const newIngredients = Object.create(ingredients)
