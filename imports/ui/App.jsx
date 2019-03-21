@@ -11,6 +11,8 @@ const App = () => {
     newIngredients.push(ingredient)
     setIngredients(newIngredients)
   }
+
+
   return (
     <div>
       <h1>Nav bar stand in</h1>

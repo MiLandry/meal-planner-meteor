@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LabeledInput from './LabeledInput';
+import Ingredient from './Ingredient';
 
 const onNewIngredientClick = e => {
   e.preventDefault();
@@ -46,7 +47,14 @@ const renderIngredients = ingredients => {
   console.log('ingredients' + ingredients)
   const list = (ingredients.map(ingredient =>
     <tr>
-      {ingredient}
+      {/* {ingredient} */}
+      <Ingredient
+        ingredientName={ingredient}
+        onDeleteClick={(e) => {
+          e.preventDefault()
+          alert('sntahoei')
+        }}
+      />
     </tr>
   ))
 
