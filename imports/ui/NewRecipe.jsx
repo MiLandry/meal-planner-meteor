@@ -29,10 +29,14 @@ const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient
         className='new-ingredient-button'
         useLabel={false}
         label='ingredient'
-        value={newIngredient}
+        value={newIngredient.name}
         onChange={(event) => {
-          console.log(event.target.value);
-          setNewIngredient(event.target.value)
+          const ingredientName = event.target.value
+          setNewIngredient({
+            ingredientName,
+            id: ingredientName + Math.random()
+
+          })
 
 
         }}
@@ -46,32 +50,39 @@ const renderNewIngredientInput = (newIngredient, setNewIngredient, addIngredient
 const renderIngredients = ingredients => {
   console.log('ingredients' + ingredients)
   const list = (ingredients.map(ingredient =>
-    <tr>
-      {/* {ingredient} */}
+    <li>
       <Ingredient
-        ingredientName={ingredient}
+        ingredientName={ingredient.name}
+        key={ingredient.id}
         onDeleteClick={(e) => {
           e.preventDefault()
-          alert('sntahoei')
+          alert('deleting' + ingredient)
+
+          // delete (ingredient)
+
         }}
       />
-    </tr>
+    </li>
   ))
 
   return (
     <div>
 
       <h2>list of ingredients</h2>
-      {list}
+      <ul>
+        {list}
+      </ul>
     </div>
 
 
   )
 }
 
+//TODO add type where ingredients is an array of Ingredient objects
+//TODO add an Ingredient Type
 
 const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient }) => {
-  const [newIngredient, setNewIngredient] = useState('');
+  const [newIngredient, setNewIngredient] = useState({});
   const [instructions, setInstructions] = useState('');
   return (
     <div className="new-recipe-form-container">
