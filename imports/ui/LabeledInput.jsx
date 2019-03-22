@@ -1,16 +1,32 @@
 import React from 'react';
 
 const LabeledInput = ({ label, useLabel = true, value, onChange }) => {
-  console.log('label', label)
 
-  console.log('useLabel', useLabel)
+  const divStyle = {
+    display: 'inline',
 
+  }
 
-  const renderLabel = useLabel && (<label>{label}</label>)
+  const labelStyle = {
+    // marginRight: '1em',
+
+  }
+
+  const inputStyle = {
+    marginLeft: '1em',
+
+  }
+
+  const renderLabel = useLabel && (<label style={labelStyle}>{label}</label>)
 
   return (
-    <div>
-      {renderLabel}<input className="text-field" type="text" value={value} onChange={onChange} />
+    <div style={divStyle}>
+      {renderLabel}<input
+        className="text-field"
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
     </div>
   )
 };
