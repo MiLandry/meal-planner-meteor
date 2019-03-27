@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NewRecipe from './NewRecipe.jsx';
+import NewRecipe from './new-recipe/NewRecipe.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 
