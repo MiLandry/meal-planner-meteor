@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import NewRecipe from './new-recipe/NewRecipe.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
-// import deleteElementFromArrayById from '../../lib/utils';
-const deleteElementFromArrayById = (arr, id) => {
-  return arr.splice(arr.findIndex(function (i) {
-    return i.id === id;
-  }), 1)
-}
+import { deleteElementFromArrayById } from '../../lib/utils';
 
 
 const App = () => {
@@ -21,6 +16,7 @@ const App = () => {
 
   const deleteIngredient = (ingredient) => {
     const newIngredients = Object.create(ingredients)
+    console.log('deleteElementFromArrayById', deleteElementFromArrayById)
     deleteElementFromArrayById(newIngredients, ingredient.id)
     setIngredients(newIngredients)
   }
