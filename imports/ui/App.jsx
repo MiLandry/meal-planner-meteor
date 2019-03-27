@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import NewRecipe from './new-recipe/NewRecipe.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+// import deleteElementFromArrayById from '../../lib/utils';
+const deleteElementFromArrayById = (arr, id) => {
+  return arr.splice(arr.findIndex(function (i) {
+    return i.id === id;
+  }), 1)
+}
 
 
 const App = () => {
   const [ingredients, setIngredients] = useState([]);
   const [recipeName, setRecipeName] = useState(['Bisque']);
+
   const addIngredient = (ingredient) => {
     const newIngredients = Object.create(ingredients)
     newIngredients.push(ingredient)
+    setIngredients(newIngredients)
+  }
+
+  const deleteIngredient = (ingredient) => {
+    const newIngredients = Object.create(ingredients)
+    deleteElementFromArrayById(newIngredients, ingredient.id)
     setIngredients(newIngredients)
   }
 
@@ -22,6 +35,7 @@ const App = () => {
         setRecipeName={setRecipeName}
         ingredients={ingredients}
         addIngredient={addIngredient}
+        deleteIngredient={deleteIngredient}
       />
     </div>
   );
