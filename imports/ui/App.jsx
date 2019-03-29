@@ -2,7 +2,20 @@ import React, { useState } from 'react';
 import NewRecipe from './new-recipe/NewRecipe.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import { deleteElementFromArrayById } from '../../lib/utils';
+import gql from 'graphql-tag';
+import { graphql, ApolloProvider } from 'react-apollo';
+import ApolloClient from "apollo-boost";
 
+const hiQuery = gql`
+{
+  hi
+}
+`;
+
+
+const client = new ApolloClient({
+  uri: "http://localhost:3000/"
+});
 
 const App = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -23,7 +36,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <ApolloProvider client={client}>
       <h1>Nav bar stand in</h1>
       <AccountsUIWrapper />
       <NewRecipe
@@ -33,8 +46,10 @@ const App = () => {
         addIngredient={addIngredient}
         deleteIngredient={deleteIngredient}
       />
-    </div>
+    </ApolloProvider>
   );
 }
 
-export default App;
+export default graphql(
+  hiQuery
+)(App);

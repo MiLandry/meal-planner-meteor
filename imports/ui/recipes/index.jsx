@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Recipe = ({ }) => {
+const Recipe = ({ recipe }) => {
+  const { title } = recipe
 
   return (
     <div>
-      <p> Recipe </p>
+      {title}
     </div>
   )
 };
