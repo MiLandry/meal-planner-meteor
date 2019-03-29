@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import LabeledInput from '../core/LabeledInput';
 import IngredientListItem from './IngredientListItem';
 import NewIngredientInput from './NewIngredientInput';
+import ReactQuill from 'react-quill'; // ES6
+
 
 const onNewIngredientClick = e => {
   e.preventDefault();
@@ -17,7 +19,6 @@ const onSubmit = e => {
 
 
 const renderIngredients = (ingredients, deleteIngredient) => {
-  console.log('ingredients' + ingredients)
   const list = (ingredients.map(ingredient =>
     <li>
       <IngredientListItem
@@ -73,6 +74,10 @@ const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient, dele
             setInstructions(e.target.value)
           }}
         />
+        {/* <ReactQuill
+        value={'herp'}
+        onChange={() => { }}
+      /> */}
         <br />
         <br />
         <br />
@@ -90,6 +95,7 @@ const NewRecipe = ({ recipeName, setRecipeName, ingredients, addIngredient, dele
           console.log('instructions' + instructions)
         }}>Add new recipe</button>
       </form>
+
     </div >
   )
 };
