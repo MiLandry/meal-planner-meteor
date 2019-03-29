@@ -2,3 +2,32 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+label {
+  display: block;
+  font-size: 2em;
+}
+
+.login-link-and-dropdown-list{
+  margin: 1em;
+}
+
+.text-field{
+  width: 30em;
+  height: 2rem;
+  margin-left: 5em;
+  /* color: red; */
+}
+
+.new-recipe-form-container{
+  background-color: whitesmoke;
+  padding: 4em;
+}
+/* .new-ingredient-button{
+  display: inline;
+} */
+
+input, label, button{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 0;
+}
